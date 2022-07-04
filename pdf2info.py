@@ -50,12 +50,3 @@ def extract_from_dir(src_dir, out_folder) -> (int, int, int):
             if res: total_tables += num
             if not res: errored_pdfs += 1
     return total_tables, errored_pdfs, tot_pdf
-
-
-if __name__ == '__main__':
-    src_dir = "../dataset/arXIv_AI_2022_june"
-    out_folder = "out"
-    total_tables, errored_pdfs, tot_pdf = extract_from_dir(src_dir, out_folder)
-    print("pdfs with errors: {}/{} ".format(errored_pdfs, tot_pdf))
-    print("tables extracted: {}".format(total_tables))
-
