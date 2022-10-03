@@ -1,6 +1,7 @@
 import logging
 import os
 from core.extractor import extract_tables
+from core.operations import post_prpocess, preprocess_file
 
 
 def extract_from_pdf(src_doc: str, out_folder: str) -> (bool, int):
@@ -18,13 +19,19 @@ def extract_from_pdf(src_doc: str, out_folder: str) -> (bool, int):
     file_name = os.path.basename(src_doc)
     logging.info("processing " + file_name)
 
-    # Tabula:
+    # Extract:
+    tables = []
     try:
-        tables = extract_tables(src_doc)
+        src = preprocess_file(src_doc)
+        tables = extract_tables(src)
+        tables = post_prpocess(tables)
     except Exception as e:
-        logging.error("Skipping because error opening: "+str(e))
+        logging.error("Skipping because error processing pdf '{}': {}".format(src_doc, str(e)))
         return False, 0
-    logging.debug("Found {} tables with tabula".format(len(tables)))
+    finally:
+        logging.debug("Found {} tables with tabula".format(len(tables)))
+
+    #Save:
     for i, table in enumerate(tables):
         out_path = os.path.join(out_folder, "{}_{}.csv".format(file_name[:-4], i))
         table.to_csv(out_path)
