@@ -1,7 +1,6 @@
-import tabula
 import logging
-logging.getLogger('tabula').setLevel(logging.CRITICAL)
 import os
+from core.extractor import extract_tables
 
 
 def extract_from_pdf(src_doc: str, out_folder: str) -> (bool, int):
@@ -21,7 +20,7 @@ def extract_from_pdf(src_doc: str, out_folder: str) -> (bool, int):
 
     # Tabula:
     try:
-        tables = tabula.read_pdf(src_doc, pages="all")
+        tables = extract_tables(src_doc)
     except Exception as e:
         logging.error("Skipping because error opening: "+str(e))
         return False, 0
