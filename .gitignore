@@ -2,6 +2,7 @@
 
 ./out
 result.log
+comparison/tab2know_results.csv
 
 ### Python template
 # Byte-compiled / optimized / DLL files
