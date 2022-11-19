@@ -36,7 +36,7 @@ $ conda create --name venv --file requirements.txt
 Place all your necessary PDFs in a single dicrectory, then call process_folder.py script:
 
 ```console
-$ python process_folder.py --dir=path/to/your/dir --out=path/to/out/folder
+$ python tables_from_dir.py --dir=path/to/your/dir --out=path/to/out/folder
 ```
 
 This will create one csv file per table.
@@ -44,5 +44,7 @@ This will create one csv file per table.
 Logging can be read in **results.log** file. If need to check console live log, add **--log-console** param:
 
 ```console
-$ python process_folder.py --dir=path/to/your/dir --out=path/to/out/folder --log-console
+$ python tables_from_dir.py --dir=path/to/your/dir --out=path/to/out/folder --log-console
 ```
+
+If you only need to extract from one pdf, use `tables_from_file.py` instead of `tables_from_dir.py` 
