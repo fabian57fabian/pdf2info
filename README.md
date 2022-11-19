@@ -42,6 +42,7 @@ $ cd RDFLib
 $ docker-compose up -d --build
 ```
 To check if it is working, go to http://localhost:8000 .
+This docker was incorporated from [rdflib-endpoint](https://github.com/vemonet/rdflib-endpoint).
 
 ### Launch extraction
 
