@@ -20,7 +20,7 @@ def load(csv_path) -> (dict, int):
 
 
 if __name__ == '__main__':
-    folder_csv = "../../out_tab2know/csv"
+    folder_csv = "out_tab2know/csv"
     out_result = "tab2know_results.csv"
     tables_out, total_tables = load(folder_csv)
     print("Total tables: {}".format(total_tables))

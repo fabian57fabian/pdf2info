@@ -3,6 +3,17 @@
 ./out
 result.log
 comparison/tab2know_results.csv
+comparison/out_tab2know
+comparison/papers_chunk1
+comparison/papers_chunk2
+comparison/papers_chunk3
+comparison/papers_chunk4
+comparison/papers_TEST_200.zip
+comparison/tab2know_java_extractor.zip
+comparison/tab2know-extractor.jar
+comparison/tab2know_extraction_log
+comparison/run_java_on_papers.sh
+
 
 ### Python template
 # Byte-compiled / optimized / DLL files

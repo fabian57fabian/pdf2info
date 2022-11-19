@@ -33,6 +33,10 @@ $ conda create --name venv --file requirements.txt
 
 ## How to use
 
+### Recreate tab2know results
+
+Check [comparison](comparison/README.md) istructions.
+
 ### RDF Endpoint
 
 Start the RDF endpoint:
