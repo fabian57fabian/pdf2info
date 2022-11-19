@@ -33,7 +33,7 @@ def extract_from_pdf(src_doc: str, out_folder: str) -> (bool, int):
 
     #Save:
     for i, table in enumerate(tables):
-        out_path = os.path.join(out_folder, "{}_{}.csv".format(file_name[:-4], i))
+        out_path = os.path.join(out_folder, "{}_Table{}.csv".format(file_name[:-4], i))
         table.to_csv(out_path)
     return True, len(tables)
 

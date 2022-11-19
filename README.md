@@ -37,6 +37,10 @@ $ conda create --name venv --file requirements.txt
 
 Check [comparison](comparison/README.md) istructions.
 
+### Recreate pdf2info results
+
+Check [analysis](analysis/README.md) istructions.
+
 ### RDF Endpoint
 
 Start the RDF endpoint:

@@ -5,8 +5,8 @@ from core.results_loader import load_results_from_csv
 
 
 if __name__ == '__main__':
-    folder_csv = "out_tab2know/csv"
-    out_result = "tab2know_results.csv"
+    folder_csv = "csv_extracted"
+    out_result = "pdf2info_results.csv"
     tables_out, total_tables = load_results_from_csv(folder_csv)
     print("Total tables: {}".format(total_tables))
     with open(out_result, 'w') as file:
