@@ -3,6 +3,8 @@
 ./out
 result.log
 comparison/tab2know_results.csv
+analysis/pdf2info_results.csv
+
 comparison/out_tab2know
 comparison/papers_chunk1
 comparison/papers_chunk2
@@ -13,6 +15,14 @@ comparison/tab2know_java_extractor.zip
 comparison/tab2know-extractor.jar
 comparison/tab2know_extraction_log
 comparison/run_java_on_papers.sh
+
+analysis/papers_TEST_200.zip
+analysis/csv_extracted
+analysis/papers_chunk1
+analysis/papers_chunk2
+analysis/papers_chunk3
+analysis/papers_chunk4
+
 
 
 ### Python template
