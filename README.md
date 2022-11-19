@@ -33,6 +33,18 @@ $ conda create --name venv --file requirements.txt
 
 ## How to use
 
+### RDF Endpoint
+
+Start the RDF endpoint:
+
+```console
+$ cd RDFLib
+$ docker-compose up -d --build
+```
+To check if it is working, go to http://localhost:8000 .
+
+### Launch extraction
+
 Place all your necessary PDFs in a single dicrectory, then call process_folder.py script:
 
 ```console
