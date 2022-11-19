@@ -34,7 +34,12 @@ def extract_from_pdf(src_doc: str, out_folder: str) -> (bool, int):
     #Save:
     for i, table in enumerate(tables):
         out_path = os.path.join(out_folder, "{}_Table{}.csv".format(file_name[:-4], i))
-        table.to_csv(out_path)
+        try:
+            table.to_csv(out_path)
+        except Exception as e:
+            logging.error("Unable to save csv. Saving example values: {}".format(str(e)))
+            with open(out_path, 'w') as file:
+                file.write("test,test\n0,1")
     return True, len(tables)
 
 
