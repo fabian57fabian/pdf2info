@@ -21,7 +21,7 @@ def init_logging(lvl, fn):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Extracts tables from pdfs inside a directory.')
-    parser.add_argument('--dir', type=str, help='Directory with PDFs')
+    parser.add_argument('--dir', type=str, required=True, help='Directory with PDFs')
     parser.add_argument('--out', type=str, default='./', help='Out folder')
     parser.add_argument('--log-console', action='store_true', default=False, help='if logging to console instead of logging file')
     args = parser.parse_args()
