@@ -1,7 +1,6 @@
-import os
 import sys
 sys.path.insert(0, "../")
-from core.results_loader import load_results_from_csv
+from core.analysis.results_loader import load_results_from_csv
 
 
 if __name__ == '__main__':
