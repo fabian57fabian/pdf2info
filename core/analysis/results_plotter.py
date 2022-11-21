@@ -2,15 +2,14 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-def plot_results(res):
+def plot_results(res, color_min=0, color_max=5, cmap='Reds'):
     plt.figure(figsize=(9,9))
     a = np.array(res)
     ns = np.ceil(np.sqrt(len(res))).astype(int)
     s = np.zeros(ns ** 2)
     s[:a.size] = a
     y = s.reshape(ns, ns)
-
-    plt.imshow(y, cmap='Reds', interpolation='nearest')
+    plt.imshow(y, cmap=cmap, vmin=color_min, vmax=color_max)
     plt.show()
 
 
