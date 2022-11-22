@@ -19,7 +19,7 @@ def load_groundtruth(path:str):
     return gth
 
 
-def check_results(csv_folder:str, groundtruth:dict):
+def check_results(csv_folder:str, groundtruth:dict) ->(list, list):
     res = []
     res_percentage = []
     for file_tablex in os.listdir(csv_folder):
@@ -43,7 +43,7 @@ def check_results(csv_folder:str, groundtruth:dict):
                 logging.warning("Unable to complete check on file {}: {}".format(file, str(e)))
             res.append(found)
             res_percentage.append(100.0 if gth_tables== 0 else float(found)/gth_tables)
-    return res
+    return res, res_percentage
 
 
 
