@@ -12,4 +12,4 @@ if __name__ == '__main__':
     res, res_percentage = check_results(csv_folder, gth)
     # res into list
     results = res_percentage
-    plot_results(results)
+    plot_results(results, color_min=0, color_max=100)

@@ -1,8 +1,11 @@
 import matplotlib.pyplot as plt
 import numpy as np
+from  matplotlib.colors import LinearSegmentedColormap
 
 
-def plot_results(res, color_min=0, color_max=5, cmap='Reds'):
+def plot_results(res, color_min=None, color_max=None, cmap=None):
+    if cmap is None:
+        cmap = LinearSegmentedColormap.from_list('rg',["w", "g"], N=256)
     plt.figure(figsize=(9,9))
     a = np.array(res)
     ns = np.ceil(np.sqrt(len(res))).astype(int)
