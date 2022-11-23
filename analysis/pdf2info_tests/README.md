@@ -4,14 +4,10 @@ We will be using pdf2info extractor and then checking results.
 
 ## Usage
 
-From analysis folder:
+Make sure to have the dataset in upper folder (e.g. DATASET_PDFS_50)
 
-```console
-$ ./download_test_files.sh
-```
-
-This might take some minutes. 
-When all necessary dataset and scripts are downloaded, execute:
+Run the extarctor. It will launch the extarction on multipl cores.
+Execute.
 
 ```console
 $ python3 execute_pdf2info_on_DATASET_50.py
@@ -19,27 +15,24 @@ $ python3 execute_pdf2info_on_DATASET_50.py
 
 This might take some time depending on your CPU.
 
-Finally, call python script to count extracted figures:
+Finally, call python script to compare to groundtruth and show a heatmap.
 
 ```console
-$ python3 load_results_from_pdf2info.py
+$ python3 show_results_pdf2info.py
 ```
 
-This will create the  *pdf2info_results.csv*.
-This should be similar to pdf2info_results_PAPER_TEST_200.csv.
+This will also save the figure in../results/pdf2info_on_DATASET_PDFS_50.png
 
 You have succesfully extracted tables with pdf2info.
 
 ## Description
 
-The download_test_files.sh script will:
-- download the dataset having 200 pdfs from a release published on pdf2info repository.
+The execute_pdf2info_on_DATASET_50.py script will:
+- Create the csv_extracted folder
+- Run table extraction on multiple cores.
+- Save all tables in csv_extracted
 
-Then the execute_pdf2info_on_PAPERS_TEST_200.py script will:
-- Create the *csv_extracted* folder where results will be placed
-- run pdf2info one time for each *papers_chunkX* folder.
-
-Finally the load_results.from_pdf2info.py script will:
-- Count the figures created in csv_extracted/csv for each pdf
-- Print the total amount of figures retrieved
-- save a *pdf2info_results.csv* file containing figures count per pdf.
+Finally the show_results_tab2know.py script will:
+- Find each table saved in out_tab2know/csv for each pdf
+- Match them to groundtruth
+- plot a heatmap, show and save to ../results/pdf2info_on_DATASET_PDFS_50
