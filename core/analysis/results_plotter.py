@@ -2,11 +2,21 @@ import matplotlib.pyplot as plt
 import numpy as np
 from  matplotlib.colors import LinearSegmentedColormap
 
+DEFAULT_CMAP = LinearSegmentedColormap.from_list('rg',["w", "g"], N=256)
 
-def plot_results(res, color_min=None, color_max=None, cmap=None):
-    if cmap is None:
-        cmap = LinearSegmentedColormap.from_list('rg',["w", "g"], N=256)
-    plt.figure(figsize=(9,9))
+
+def show_cmap():
+    cmap = DEFAULT_CMAP
+    plt.figure(figsize=(3,3))
+    v = np.array([np.arange(200) for i in range(200)])
+    plt.imshow(v, cmap=cmap)
+    plt.axis('off')
+    plt.show()
+
+
+def plot_results(res, color_min=None, color_max=None, cmap=None, figsize=(7,7)):
+    if cmap is None: cmap = DEFAULT_CMAP
+    plt.figure(figsize=figsize)
     a = np.array(res)
     ns = np.ceil(np.sqrt(len(res))).astype(int)
     s = np.zeros(ns ** 2)
