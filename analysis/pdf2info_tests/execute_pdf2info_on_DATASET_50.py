@@ -2,7 +2,7 @@ import os
 import shutil
 import sys
 import logging
-sys.path.insert(0, "../")
+sys.path.insert(0, "../../")
 from core.pdf2info import extract_from_dir
 
 
@@ -11,7 +11,7 @@ if __name__ == '__main__':
         level=logging.DEBUG+1,
         format='%(asctime)s %(levelname)s: %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p'
     )
-    chunks_path = "DATASET_PDFS_50/chunks"
+    chunks_path = "../DATASET_PDFS_50/chunks"
     out_folder = "csv_extracted"
     if os.path.exists(out_folder): shutil.rmtree(out_folder)
     for folder in os.listdir(chunks_path):
