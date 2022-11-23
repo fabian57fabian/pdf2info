@@ -9,6 +9,7 @@ def plot_results(res, color_min=0, color_max=5, cmap='Reds'):
     s = np.zeros(ns ** 2)
     s[:a.size] = a
     y = s.reshape(ns, ns)
+    plt.title("{:.2f}%".format(np.mean(y)))
     plt.imshow(y, cmap=cmap, vmin=color_min, vmax=color_max)
     plt.show()
 

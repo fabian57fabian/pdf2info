@@ -7,15 +7,13 @@ def init_logging(lvl, fn):
     if fn is None:
         logging.basicConfig(
             level=lvl,
-            format='%(process)d-%(levelname)s-%(message)s',
-            datefmt='%H:%M:%S'
+            format='%(asctime)s %(levelname)s: %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p'
         )
     else:
         logging.basicConfig(
             filename='result.log',
             level=lvl,
-            format='%(process)d-%(levelname)s-%(message)s',
-            datefmt='%H:%M:%S'
+            format='%(asctime)s %(levelname)s: %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p'
         )
 
 

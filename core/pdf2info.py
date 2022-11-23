@@ -17,7 +17,7 @@ def extract_from_pdf(src_doc: str, out_folder: str) -> (bool, int):
     if not os.path.exists(out_folder):
         os.mkdir(out_folder)
     file_name = os.path.basename(src_doc)
-    logging.info("processing " + file_name)
+    logging.debug("processing " + file_name)
 
     # Extract:
     tables = []
@@ -54,11 +54,12 @@ def extract_from_dir(src_dir, out_folder) -> (int, int, int):
         logging.error("Input dir does not exist: " + str(src_dir))
         return False
     total_tables, errored_pdfs, tot_pdf = 0, 0, 0
-    for file in os.listdir(src_dir):
-        if file.endswith(".pdf"):
-            tot_pdf += 1
-            fn = os.path.join(src_dir, file)
-            res, num = extract_from_pdf(fn, out_folder)
-            if res: total_tables += num
-            if not res: errored_pdfs += 1
+    files = [file for file in os.listdir(src_dir) if file.endswith(".pdf")]
+    for i, file in enumerate(files):
+        logging.log(logging.DEBUG+1,"{:.2f}%".format(i/len(files)*100))
+        tot_pdf += 1
+        fn = os.path.join(src_dir, file)
+        res, num = extract_from_pdf(fn, out_folder)
+        if res: total_tables += num
+        if not res: errored_pdfs += 1
     return total_tables, errored_pdfs, tot_pdf
