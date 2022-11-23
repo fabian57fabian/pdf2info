@@ -1,3 +1,5 @@
+import os.path
+
 import matplotlib.pyplot as plt
 import numpy as np
 from  matplotlib.colors import LinearSegmentedColormap
@@ -14,9 +16,9 @@ def show_cmap():
     plt.show()
 
 
-def plot_results(res, color_min=None, color_max=None, cmap=None, figsize=(7,7)):
+def plot_results(res, color_min=None, color_max=None, cmap=None, figsize=(7,7), save_to=None):
     if cmap is None: cmap = DEFAULT_CMAP
-    plt.figure(figsize=figsize)
+    fig = plt.figure(figsize=figsize)
     a = np.array(res)
     ns = np.ceil(np.sqrt(len(res))).astype(int)
     s = np.zeros(ns ** 2)
@@ -25,6 +27,9 @@ def plot_results(res, color_min=None, color_max=None, cmap=None, figsize=(7,7)):
     plt.title("{:.2f}%".format(np.mean(y)))
     plt.imshow(y, cmap=cmap, vmin=color_min, vmax=color_max)
     plt.show()
+    plt.draw()
+    if save_to is not None:
+        fig.savefig(save_to)
 
 
 if __name__ == '__main__':

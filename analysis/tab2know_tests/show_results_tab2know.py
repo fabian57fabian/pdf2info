@@ -8,6 +8,4 @@ if __name__ == '__main__':
     csv_folder="out_tab2know/csv"
     gth = load_groundtruth("../DATASET_PDFS_50/GROUNDTRUTH_DATASET.csv")
     res, res_percentage = check_results(csv_folder, gth, split_char='-')
-    # res into list
-    results = res_percentage
-    plot_results(results, color_min=0, color_max=100)
+    plot_results(res_percentage, color_min=0, color_max=100, save_to="../results/tab2know_on_DATASET_PDFS_50.png")
