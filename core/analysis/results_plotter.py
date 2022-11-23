@@ -25,6 +25,7 @@ def plot_results(res, color_min=None, color_max=None, cmap=None, figsize=(7,7), 
     s[:a.size] = a
     y = s.reshape(ns, ns)
     plt.title("{:.2f}%".format(np.mean(y)))
+    plt.axis('off')
     plt.imshow(y, cmap=cmap, vmin=color_min, vmax=color_max)
     plt.show()
     plt.draw()
