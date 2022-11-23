@@ -14,7 +14,7 @@ This might take some minutes.
 When all necessary dataset and scripts are downloaded, execute:
 
 ```console
-$ python2 execute_pdf2info_on_PAPERS_TEST_200.py
+$ python3 execute_pdf2info_on_DATASET_50.py
 ```
 
 This might take some time depending on your CPU.

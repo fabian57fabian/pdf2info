@@ -11,7 +11,7 @@ if __name__ == '__main__':
         format='%(process)d-%(levelname)s-%(message)s',
         datefmt='%H:%M:%S'
     )
-    chunks_path = "./"
+    chunks_path = "DATASET_PDFS_50/chunks"
     out_folder = "csv_extracted"
     for folder in os.listdir(chunks_path):
         if folder.startswith("papers_chunk"):

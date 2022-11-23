@@ -4,6 +4,8 @@
 result.log
 comparison/tab2know_results.csv
 analysis/pdf2info_results.csv
+analysis/DATASET_PDFS_50
+analysis/DATASET_PDFS_50.zip
 
 comparison/out_tab2know
 comparison/papers_chunk1

@@ -50,5 +50,5 @@ def check_results(csv_folder:str, groundtruth:dict) ->(list, list):
 
 if __name__ == '__main__':
     csv_folder="../../analysis/csv_extracted"
-    gth = load_groundtruth("../../analysis/GROUNDTRUTH_TEST_200.csv")
+    gth = load_groundtruth("../../analysis/GROUNDTRUTH_DATASET_50.csv")
     check_results(csv_folder, gth)
