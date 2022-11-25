@@ -35,11 +35,11 @@ $ conda create --name venv --file requirements.txt
 
 ### Recreate tab2know results
 
-Check [comparison](comparison/README.md) istructions.
+Check [analysis/tab2know_tests](analysis/tab2know_tests) istructions.
 
 ### Recreate pdf2info results
 
-Check [analysis](analysis/README.md) istructions.
+Check [analysis/pdf2info_tests](analysis/pdf2info_tests) istructions.
 
 ### RDF Endpoint
 
