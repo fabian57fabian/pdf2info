@@ -33,14 +33,6 @@ $ conda create --name venv --file requirements.txt
 
 ## How to use
 
-### Recreate tab2know results
-
-Check [analysis/tab2know_tests](analysis/tab2know_tests) istructions.
-
-### Recreate pdf2info results
-
-Check [analysis/pdf2info_tests](analysis/pdf2info_tests) istructions.
-
 ### Launch extraction
 
 Place all your necessary PDFs in a single dicrectory, then call process_folder.py script:
@@ -58,3 +50,18 @@ $ python tables_from_dir.py --dir=path/to/your/dir --out=path/to/out/folder --lo
 ```
 
 If you only need to extract from one pdf, use `tables_from_file.py` instead of `tables_from_dir.py` 
+
+### Recreate tab2know results
+
+Check [analysis/tab2know_tests](analysis/tab2know_tests) istructions.
+
+### Recreate pdf2info results
+
+Check [analysis/pdf2info_tests](analysis/pdf2info_tests) istructions.
+
+# pdf2info vs tab2know
+
+<p align="center">
+  <img width="400" height="400" src="analysis/results/pdf2info_on_DATASET.png">
+  <img width="400" height="400" src="analysis/results/tab2know_on_DATASET.png">
+</p>
