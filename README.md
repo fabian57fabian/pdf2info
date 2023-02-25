@@ -41,17 +41,6 @@ Check [analysis/tab2know_tests](analysis/tab2know_tests) istructions.
 
 Check [analysis/pdf2info_tests](analysis/pdf2info_tests) istructions.
 
-### RDF Endpoint
-
-Start the RDF endpoint:
-
-```console
-$ cd RDFLib
-$ docker-compose up -d --build
-```
-To check if it is working, go to http://localhost:8000 .
-This docker was incorporated from [rdflib-endpoint](https://github.com/vemonet/rdflib-endpoint).
-
 ### Launch extraction
 
 Place all your necessary PDFs in a single dicrectory, then call process_folder.py script:
