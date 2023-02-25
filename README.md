@@ -62,6 +62,6 @@ Check [analysis/pdf2info_tests](analysis/pdf2info_tests) istructions.
 # pdf2info vs tab2know
 
 <p align="center">
-  <img width="400" height="400" src="analysis/results/pdf2info_on_DATASET.png">
-  <img width="400" height="400" src="analysis/results/tab2know_on_DATASET.png">
+  <img width="400" height="400" src="analysis/results/pdf2info_on_DATASET.png" alt="pdf2info heatmap results">
+  <img width="400" height="400" src="analysis/results/tab2know_on_DATASET.png" alt="tab2know heatmap results">
 </p>
