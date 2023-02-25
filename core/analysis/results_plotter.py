@@ -31,7 +31,8 @@ def plot_results(TP, TN, FP, FN, files_percentage_ok, color_min=None, color_max=
     N = 0
     acc = (TP+TN)/(P+N)
     accuracy_over_pdfs = np.mean(y)
-    plt.title("acc: {:.2f}% ({:.2f}% pdf), precision:{:.2f}%, recall:{:.2f}%, tables num:{}".format(acc*100, accuracy_over_pdfs, precision*100, recall*100, tables_num))
+    #plt.title("acc: {:.2f}% ({:.2f}% pdf), precision:{:.2f}%, recall:{:.2f}%, tables num:{}".format(acc*100, accuracy_over_pdfs, precision*100, recall*100, tables_num))
+    plt.title("acc: {:.2f}%".format(accuracy_over_pdfs))
     plt.axis('off')
     plt.imshow(y, cmap=cmap, vmin=color_min, vmax=color_max)
     plt.show()
