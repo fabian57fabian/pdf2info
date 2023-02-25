@@ -7,5 +7,5 @@ from core.analysis.check_results_over_groundtruth import load_groundtruth, check
 if __name__ == '__main__':
     csv_folder="out_tab2know/csv"
     gth = load_groundtruth("../DATASET/GROUNDTRUTH_DATASET.csv")
-    res, res_percentage = check_results(csv_folder, gth, split_char='-')
-    plot_results(res_percentage, color_min=0, color_max=100, save_to="../results/tab2know_on_DATASET.png")
+    TP, TN, FP, FN, files_percentage_ok = check_results(csv_folder, gth, split_char='-')
+    plot_results(TP, TN, FP, FN, files_percentage_ok, color_min=0, color_max=100, save_to="../results/tab2know_on_DATASET.png")
