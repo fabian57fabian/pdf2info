@@ -13,7 +13,7 @@ if __name__ == '__main__':
         format='%(asctime)s %(levelname)s: %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p'
     )
     PARALLEL = True
-    chunks_path = "../DATASET_PDFS_50/chunks"
+    chunks_path = "../DATASET/chunks"
     out_folder = "csv_extracted"
     if os.path.exists(out_folder): shutil.rmtree(out_folder)
     if PARALLEL:

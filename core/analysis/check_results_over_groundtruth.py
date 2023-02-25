@@ -7,7 +7,7 @@ def load_groundtruth(path:str):
     with open(path, 'r') as file:
         for l in file.readlines():
             splitted = l.strip().split(',')
-            if len(splitted) < 3:
+            if len(splitted) < 2:
                 logging.warning("Error in gth file {}".format(file))
             fn = splitted[0]
             if splitted[1] == '' or splitted[1] == "_NO_TABLES_":

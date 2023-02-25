@@ -14,7 +14,7 @@ Then run extractor. It will launch a java instance for each chunk of data in dat
 Execute:
 
 ```console
-$ ./run_java_on_papers.sh
+$ ./execute_tab2know_on_DATASET.sh
 ```
 
 This might take some time depending on your CPU.
