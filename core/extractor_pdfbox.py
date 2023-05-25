@@ -29,9 +29,10 @@ def load_tables_manually(path):
     text = read_and_delete_file(tmp_fn)
 
     tables = []
-
+    remaining_text = []
     # Iterate thru text
     for i in range(len(text)):
+        remaining_text.append(i)
         # if we arrive at a line starting with "Table X", it is the caption.
         curr_line = text[i].lower()
         #if "table" in curr_line.lower():
@@ -45,6 +46,8 @@ def load_tables_manually(path):
             for table_is_before in [True, False]:
                 for k in range(1, min(i, 50)):
                     next_index = i-k if table_is_before else i+k
+                    if next_index in remaining_text:
+                        remaining_text.remove(next_index)
                     if next_index < 0 or next_index >= len(text):
                         break
                     line = text[next_index]
@@ -66,6 +69,8 @@ def load_tables_manually(path):
                             line_has_digits = True
                         else:
                             line_has_digits = digits >= words // 3 or digits >= 2
+                    if digits > 0 and not line_has_digits:
+                        line_has_digits = line_words[-1].replace('.','',1).replace('%','').replace('±','').isdigit()
                     if line_has_digits:
                         # line with digits
                         current_table.insert(0, line)
@@ -103,6 +108,7 @@ def load_tables_manually(path):
 #manual 'Table X' + 'Tab. X' + least 3 numbs + float		-> 73.00 %
 #manual 'Table X' + 'Tab. X' + least 2 numbs + 2,3 elements + float		-> 73.17 %
 #manual 'Table X' + 'Tab. X' + backwards + least 2 numbs + 2,3 elements + float		-> 75.09 %
+#manual 'Table X' + 'Tab. X' + backwards + last_is_num + least 2 numbs + 2,3 elements + float		-> 76.07 %
 
 if __name__ == '__main__':
     logging.basicConfig(level=logging.DEBUG)
