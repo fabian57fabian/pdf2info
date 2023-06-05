@@ -13,6 +13,7 @@ if __name__ == '__main__':
         format='%(asctime)s %(levelname)s: %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p'
     )
     PARALLEL = True
+    method_used = 'tabula'
     chunks_path = "../DATASET/chunks"
     out_folder = "csv_extracted"
     if os.path.exists(out_folder): shutil.rmtree(out_folder)
@@ -34,7 +35,7 @@ if __name__ == '__main__':
             total_files = len(files_list)
             logging.log(logging.DEBUG + 1, "{}: {:.2f}%".format(index, counter / total_files * 100))
             for fn in files_list:
-                res, num = extract_from_pdf(fn, out_folder)
+                res, num = extract_from_pdf(fn, out_folder, method_used=method_used)
                 counter += 1
                 logging.log(logging.DEBUG + 1, "{}: {:.2f}%".format(index, counter / total_files * 100))
             logging.info("{}: Completed {} files".format(index, total_files))

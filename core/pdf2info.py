@@ -4,7 +4,7 @@ from core.extractor import extract_tables
 from core.operations import post_prpocess, preprocess_file
 
 
-def extract_from_pdf(src_doc: str, out_folder: str) -> (bool, int):
+def extract_from_pdf(src_doc: str, out_folder: str, method_used='all') -> (bool, int):
     """
     Given a pdf filename, extracts tables saving them as csv in output dir.
     :param src_doc:
@@ -23,7 +23,7 @@ def extract_from_pdf(src_doc: str, out_folder: str) -> (bool, int):
     tables = []
     try:
         src = preprocess_file(src_doc)
-        tables = extract_tables(src)
+        tables = extract_tables(src, method_used=method_used)
         tables = post_prpocess(tables)
     except Exception as e:
         logging.error("Skipping because error processing pdf '{}': {}".format(src_doc, str(e)))

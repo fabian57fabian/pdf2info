@@ -20,7 +20,7 @@ def find_numbers_in_line(line):
     digits_elements = [l for l in line_words if l.replace('.','',1).replace('%','').replace('±','').isdigit()]
     return line_words, digits_elements
 
-def load_tables_manually(path):
+def extract_tables(path):
     global p
     tmp_fn = tempfile.NamedTemporaryFile().name + ".txt"
     if p is None:
@@ -113,7 +113,7 @@ def load_tables_manually(path):
 if __name__ == '__main__':
     logging.basicConfig(level=logging.DEBUG)
     path = "../analysis/DATASET/chunks/papers_chunk_1/2211.09259.pdf"
-    tables = load_tables_manually(path)
+    tables = extract_tables(path)
     if tables is not None:
         for t in tables:
             print(t)

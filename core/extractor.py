@@ -1,18 +1,44 @@
-import tabula
-from core.extractor_pdfbox import load_tables_manually
+from core.extractor_pdfbox import extract_tables as ex_pdfbox
+from core.extractor_tabula import extract_tables as ex_tabula
+from core.extractor_camelot import extract_tables as ex_camelot
+from core.extractor_pdfminer import extract_tables as ex_pdfminer
 import logging
-logging.getLogger('tabula').setLevel(logging.CRITICAL)
 
 
-def remove_double_tables(tables1, tables2):
-    # TODO: make an algorythm and optimizie
-    return tables1 + tables2
+def extraction_methods_names() -> list:
+    return ['tabula', 'camelot', 'pdfminer', 'linesearch', 'tab2know']
 
 
-def extract_tables(filename):
-    tables_tabula = tabula.read_pdf(filename, pages="all", multiple_tables=True)
-    tables_pdfbox_manual = load_tables_manually(filename)
-    res_tables = remove_double_tables(tables_tabula, tables_pdfbox_manual)
-    return res_tables
+def method_from_name(name: str):
+    if name == 'tabula':
+        return ex_tabula
+    elif name == 'camelot':
+        return ex_camelot
+    elif name == 'pdfminer':
+        return ex_pdfminer
+    elif name == 'tab2know':
+        raise Exception("MEthod not implemented here")
+    elif name == 'linesearch':
+        return ex_pdfbox
+    elif name == 'all':
+        return extract_tables_all
+    else:
+        raise Exception("Wrong method given: {}".format(name))
+
+
+def extract_tables_all(filename: str):
+    tables = []
+    for method_name in extraction_methods_names():
+        method_to_use = method_from_name(method_name)
+        tables_out = method_to_use(filename)
+        # remove_double_tables
+        tables += tables_out
+    return tables
+
+
+def extract_tables(filename:str, method_used='all'):
+    method_to_use = method_from_name(method_used)
+    tables = method_to_use(filename)
+    return tables
 
 
