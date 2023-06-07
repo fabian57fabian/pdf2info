@@ -1,7 +1,7 @@
 import multiprocessing
 
 
-def execute_parallel(all_data, function_for_chunk, DEBUG=False):
+def execute_parallel(all_data, function_for_chunk, extra_args:tuple=(), DEBUG=False):
     """
     Prende in input una lista di dati (di qualsiasi natura) e una funzione da chiamare.
     Divide i dati in parti ed esegue la funzione passandogli una parte dei dati e un identificativo per tale processo.
@@ -21,14 +21,14 @@ def execute_parallel(all_data, function_for_chunk, DEBUG=False):
         end = min(i + chunk, len(all_data))
         if DEBUG: print("Generating chunk from %d to %d" % (start, end))
         part = all_data[start:end]
-        p = multiprocessing.Process(target=function_for_chunk, args=(part, int(i / chunk)))
+        p = multiprocessing.Process(target=function_for_chunk, args=(part, int(i / chunk), extra_args))
         processes.append(p)
         p.start()
     for process in processes:
         process.join()
 
 
-def simple_process(chunk, id):
+def simple_process(chunk, id, extra_args):
     sum = 0
     for d in chunk:
         sum += d

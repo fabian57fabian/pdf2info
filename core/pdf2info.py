@@ -1,7 +1,11 @@
 import logging
 import os
-from core.extractor import extract_tables
+from core.extractor import extract_tables, extraction_methods_names as get_ex_names
 from core.operations import post_prpocess, preprocess_file
+
+
+def extraction_methods_names():
+    return get_ex_names()
 
 
 def extract_from_pdf(src_doc: str, out_folder: str, method_used='all') -> (bool, int):
