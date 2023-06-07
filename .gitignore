@@ -3,8 +3,8 @@
 ./out
 result.log
 # Analysis folder
-analysis/DATASET_PDFS_50
-analysis/DATASET_PDFS_50.zip
+analysis/DATASET
+analysis/DATASET.zip
 #pdf2info output
 analysis/pdf2info_tests/csv_extracted
 analysis/tab2know_tests/out_tab2know
