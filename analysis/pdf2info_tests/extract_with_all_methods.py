@@ -13,7 +13,8 @@ if __name__ == '__main__':
         level=logging.INFO,
         format='%(asctime)s %(levelname)s: %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p'
     )
-    all_methods = extraction_methods_names() + ['all']
+    all_methods = extraction_methods_names()
+    all_methods.remove('tab2know')
     for method_used in all_methods:
         logging.info("Extracting with {}".format(method_used))
         execute_extraction_with_method(method_used, PARALLEL=True)

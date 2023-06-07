@@ -4,7 +4,7 @@ from core.extractor import extract_tables, extraction_methods_names as get_ex_na
 from core.operations import post_prpocess, preprocess_file
 
 
-def extraction_methods_names():
+def extraction_methods_names() -> list:
     return get_ex_names()
 
 

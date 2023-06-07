@@ -33,7 +33,7 @@ def extract_tables(path):
     text = read_and_delete_file(tmp_fn)
 
     # Get intereting words by analyzing html
-    #interesting_words = find_pdfminer_interesting_lines(path)
+    interesting_words = find_pdfminer_interesting_lines(path)
 
     tables = []
     remaining_text = []
@@ -48,10 +48,9 @@ def extract_tables(path):
         arrived_at_table = curr_line.startswith("table") or curr_line.startswith('tab.')
 
         if not arrived_at_table:
-            # TODO: use interesting_lines and check if we are in an interesting line.
-            # TODO: then arrived_at_table = True
-            pass
-
+            words_found = sum([1 for w in interesting_words if w in curr_line])
+            if words_found > 0:
+                arrived_at_table = True
 
         if arrived_at_table:
             logging.debug("Found one table with pdfBOX")

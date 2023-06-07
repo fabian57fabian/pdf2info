@@ -46,7 +46,10 @@ def find_pdfminer_interesting_lines(path):
         if 'ID' in row[0]:
             continue
         data_row = row[1].split('\n')
-        data += data_row
+        for d in data_row:
+            # filter only numbers
+            if d.replace('.','',1).replace('%','').replace('±','').isdigit():
+                data += d
     data = [d for d in data if len(d) > 1]
     return data
 
@@ -54,7 +57,7 @@ def find_pdfminer_interesting_lines(path):
 
 if __name__ == '__main__':
     logging.basicConfig(level=logging.DEBUG+1)
-    path = "../analysis/DATASET/chunks/papers_chunk_1/2211.09388.pdf"
+    path = "../analysis/DATASET/chunks/papers_chunk_4/2211.07363.pdf"
     intereseting_words = find_pdfminer_interesting_lines(path)
     if intereseting_words is not None:
         print(intereseting_words)
