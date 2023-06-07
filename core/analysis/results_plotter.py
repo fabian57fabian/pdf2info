@@ -16,14 +16,18 @@ def show_cmap():
     plt.show()
 
 
-def plot_results(TP, TN, FP, FN, files_percentage_ok, color_min=None, color_max=None, cmap=None, figsize=(7,7), save_to=None):
+def plot_results(TP, TN, FP, FN, files_percentage_ok, title="Results pdf2info:", color_min=None, color_max=None, cmap=None, figsize=(7,7), save_to=None):
     if cmap is None: cmap = DEFAULT_CMAP
     fig = plt.figure(figsize=figsize)
+
+    # Compute matrix to show results
     a = np.array(files_percentage_ok)
     ns = np.ceil(np.sqrt(len(files_percentage_ok))).astype(int)
     s = np.zeros(ns ** 2)
     s[:a.size] = a
     y = s.reshape(ns, ns)
+
+    # Compute scores
     tables_num = TP + FN
     precision = (TP) / (TP+FP)
     recall = (TP) / (TP+FN)
@@ -31,8 +35,8 @@ def plot_results(TP, TN, FP, FN, files_percentage_ok, color_min=None, color_max=
     N = 0
     acc = (TP+TN)/(P+N)
     accuracy_over_pdfs = np.mean(y)
-    #plt.title("acc: {:.2f}% ({:.2f}% pdf), precision:{:.2f}%, recall:{:.2f}%, tables num:{}".format(acc*100, accuracy_over_pdfs, precision*100, recall*100, tables_num))
-    plt.title("acc: {:.2f}%".format(accuracy_over_pdfs))
+    plt.title("{} ACC: {:.2f}%, P: {:.2f}%, R: {:.2f}%, ({} tables)".format(title,  acc*100, precision*100, recall*100, tables_num))
+    #plt.title("{} acc: {:.2f}%".format(title, accuracy_over_pdfs))
     plt.axis('off')
     plt.imshow(y, cmap=cmap, vmin=color_min, vmax=color_max)
     plt.show()

@@ -1,52 +1,20 @@
 import io
 import logging
 
-from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
-from pdfminer.converter import TextConverter
+from pprint import pprint
+from io import StringIO
+import re
+from pdfminer.high_level import extract_text_to_fp
 from pdfminer.layout import LAParams
-from pdfminer.pdfpage import PDFPage
+from lxml import html
 
 
-def load_text_maually_pdfminer(path):
-    rsrcmgr = PDFResourceManager()
-    retstr = io.StringIO()
-    codec = 'utf-8'
-    laparams = LAParams()
-    device = TextConverter(rsrcmgr, retstr, laparams=laparams)
-    fp = open(path, 'rb')
-    interpreter = PDFPageInterpreter(rsrcmgr, device)
-    password = ""
-    maxpages = 0
-    caching = True
-    pagenos = set()
-
-    for page in PDFPage.get_pages(fp, pagenos, maxpages=maxpages,
-                                  password=password,
-                                  caching=caching,
-                                  check_extractable=True):
-        interpreter.process_page(page)
-
-
-
-    fp.close()
-    device.close()
-    text = retstr.getvalue()
-    retstr.close()
-    return text
-
-
-def extract_tables(path):
-    from pprint import pprint
-    from io import StringIO
-    import re
-    from pdfminer.high_level import extract_text_to_fp
-    from pdfminer.layout import LAParams
-    from lxml import html
+def find_pdfminer_interesting_lines(path):
     ID_LEFT_BORDER = 56
     ID_RIGHT_BORDER = 156
     QTY_LEFT_BORDER = 355
     QTY_RIGHT_BORDER = 455
-    # Read PDF file and convert it to HTML
+    # Extract html
     output = StringIO()
     with open(path, 'rb') as pdf_file:
         extract_text_to_fp(pdf_file, output, laparams=LAParams(), output_type='html', codec=None)
@@ -77,16 +45,16 @@ def extract_tables(path):
     for row in zip(filtered_divs['ID'], filtered_divs['Qty']):
         if 'ID' in row[0]:
             continue
-        data_row = {'ID': row[0].split(' ')[0], 'Quantity': row[1]}
-        data.append(data_row)
+        data_row = row[1].split('\n')
+        data += data_row
     data = [d for d in data if len(d) > 1]
     return data
 
 
 
 if __name__ == '__main__':
-    logging.basicConfig(level=logging.DEBUG)
+    logging.basicConfig(level=logging.DEBUG+1)
     path = "../analysis/DATASET/chunks/papers_chunk_1/2211.09388.pdf"
-    tables = extract_tables(path)
-    if tables is not None:
-        print(tables)
+    intereseting_words = find_pdfminer_interesting_lines(path)
+    if intereseting_words is not None:
+        print(intereseting_words)

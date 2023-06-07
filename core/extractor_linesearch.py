@@ -1,9 +1,13 @@
 from typing import Optional, List
-import pdfbox
 import tempfile
-import pandas as pd
 import logging
 import os
+
+import pandas as pd
+
+import pdfbox
+
+from core.analyze_pdfminer import find_pdfminer_interesting_lines
 
 p = None
 
@@ -28,6 +32,9 @@ def extract_tables(path):
     p.extract_text(path, output_path=tmp_fn)
     text = read_and_delete_file(tmp_fn)
 
+    # Get intereting words by analyzing html
+    #interesting_words = find_pdfminer_interesting_lines(path)
+
     tables = []
     remaining_text = []
     # Iterate thru text
@@ -37,7 +44,16 @@ def extract_tables(path):
         curr_line = text[i].lower()
         #if "table" in curr_line.lower():
         #    a = 4
-        if curr_line.startswith("table") or curr_line.startswith('tab.'):
+        arrived_at_table = False
+        arrived_at_table = curr_line.startswith("table") or curr_line.startswith('tab.')
+
+        if not arrived_at_table:
+            # TODO: use interesting_lines and check if we are in an interesting line.
+            # TODO: then arrived_at_table = True
+            pass
+
+
+        if arrived_at_table:
             logging.debug("Found one table with pdfBOX")
             current_table = []
 
