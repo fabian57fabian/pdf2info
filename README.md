@@ -61,9 +61,13 @@ Check [analysis/pdf2info_tests](analysis/pdf2info_tests) istructions.
 
 # Comparison
 
-<p align="center">
-  <img width="400" height="400" src="analysis/results/camelot_on_DATASET.png" alt="pdf2info heatmap results">
-  <img width="400" height="400" src="analysis/results/tabula_on_DATASET.png" alt="tab2know heatmap results">
-  <img width="400" height="400" src="analysis/results/linesearch_on_DATASET.png" alt="tab2know heatmap results">
-  <img width="400" height="400" src="analysis/results/tab2know_on_DATASET.png" alt="tab2know heatmap results">
-</p>
+<div align="center">
+<div>camelot:</div>
+<img width="400" height="400" src="analysis/results/camelot_on_DATASET.png" alt="pdf2info heatmap results">
+<div>tabula:</div>  
+<img width="400" height="400" src="analysis/results/tabula_on_DATASET.png" alt="tabula heatmap results">
+<div>linesearch:</div>  
+<img width="400" height="400" src="analysis/results/linesearch_on_DATASET.png" alt="linesearch heatmap results">
+<div>tab2know:</div>  
+<img width="400" height="400" src="analysis/results/tab2know_on_DATASET.png" alt="tab2know heatmap results">
+</div>
