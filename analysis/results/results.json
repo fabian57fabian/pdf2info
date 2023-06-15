@@ -34,5 +34,14 @@
     "FP": 64,
     "FN": 48,
     "TABLES_TOTAL": 355
+  },
+  "tabula_and_linesearch": {
+    "ACC": 76.62,
+    "P": 15.12,
+    "R": 76.62,
+    "TP": 272,
+    "FP": 1527,
+    "FN": 83,
+    "TABLES_TOTAL": 355
   }
 }

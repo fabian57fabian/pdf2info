@@ -12,6 +12,6 @@ def create_plots_results(method_used:str, show_fig:bool=True):
 
 
 if __name__ == '__main__':
-    method_used = 'camelot'
+    method_used = 'tabula_and_linesearch'
     create_plots_results(method_used, show_fig=True)
 
