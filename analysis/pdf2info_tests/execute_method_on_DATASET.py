@@ -44,7 +44,7 @@ def execute_extraction_with_method(method_used, PARALLEL:bool=True):
             if folder.startswith("papers_chunk"):
                 logging.debug("Processing {}".format(folder))
                 src_dir = os.path.join(chunks_path, folder)
-                total_tables, errored_pdfs, tot_pdf = extract_from_dir(src_dir, out_folder)
+                total_tables, errored_pdfs, tot_pdf = extract_from_dir(src_dir, out_folder, method_used)
                 logging.info("pdfs with errors: {}/{} ".format(errored_pdfs, tot_pdf))
                 logging.info("tables extracted: {}".format(total_tables))
 

@@ -31,12 +31,46 @@ def method_from_name(name: str):
         raise Exception("Wrong method given: {}".format(name))
 
 
+def find_matching_table(tab, tabs:list):
+    """
+    Given a table (pandas Dataframe) and a list of tables, try to find if table is contained in list.
+    MAy return None
+    :param tab:
+    :param tabs:
+    :return:
+    """
+    thresh = .5
+    for t in tabs:
+        equal_cells = 0
+        for (columnName, columnData) in t.items():
+            for el in columnData.values:
+                if el in tab:
+                    equal_cells += 1
+        if equal_cells / tab.size >= thresh:
+            return t
+    return None
+
+
+
 def extract_tables_joined(filename: str):
     tables = []
     tabs1 = ex_tabula(filename)
     tabs2 = ex_linesearch(filename)
     # merge and remove duplicates
-    tables = [ *tabs1, *tabs2]
+    for tab_ls in tabs2:
+        table_found = find_matching_table(tab_ls, tabs1)
+        if table_found is None:
+            # found new table, good
+            tables.append(tab_ls)
+        else:
+            # decide between tabula table and linesearch table
+            if table_found.size > tab_ls.size:
+                tables.append(table_found)
+                #tabs1.remove(table_found)
+            else:
+                tables.append(tab_ls)
+    if len(tabs1) > 0:
+        tables = tables + tabs1
     return tables
 
 

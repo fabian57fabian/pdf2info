@@ -47,7 +47,7 @@ def extract_from_pdf(src_doc: str, out_folder: str, method_used='all') -> (bool,
     return True, len(tables)
 
 
-def extract_from_dir(src_dir, out_folder) -> (int, int, int):
+def extract_from_dir(src_dir, out_folder, method_used) -> (int, int, int):
     """
     Given a folder, extracts all tables in out dir from all *.pdf files.
     :param src_dir:
@@ -63,7 +63,7 @@ def extract_from_dir(src_dir, out_folder) -> (int, int, int):
         logging.log(logging.DEBUG+1,"{:.2f}%".format(i/len(files)*100))
         tot_pdf += 1
         fn = os.path.join(src_dir, file)
-        res, num = extract_from_pdf(fn, out_folder)
+        res, num = extract_from_pdf(fn, out_folder, method_used=method_used)
         if res: total_tables += num
         if not res: errored_pdfs += 1
     return total_tables, errored_pdfs, tot_pdf
