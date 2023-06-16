@@ -5,18 +5,10 @@ import logging
 
 
 def extraction_methods_names() -> list:
-    return ['tabula', 'camelot', 'linesearch', 'tabula_and_linesearch', 'tab2know']
+    return ['tabula', 'camelot', 'linesearch', 'tabula_and_linesearch', 'camelot_and_linesearch', 'tab2know']
 
 
 def method_from_name(name: str):
-
-    def tabula_and_linesearch(filename) -> list:
-        tabs1 = ex_tabula(filename)
-        tabs2 = ex_linesearch(filename)
-        # merge and remove duplicates
-        tabs = tabs1 + tabs2
-        return tabs
-
     if name == 'tabula':
         return ex_tabula
     elif name == 'camelot':
@@ -26,7 +18,9 @@ def method_from_name(name: str):
     elif name == 'linesearch':
         return ex_linesearch
     elif name == 'tabula_and_linesearch':
-        return extract_tables_joined
+        return lambda filename: merge_tables(ex_tabula(filename), ex_linesearch(filename))
+    elif name == 'camelot_and_linesearch':
+        return lambda filename: merge_tables(ex_camelot(filename), ex_linesearch(filename))
     else:
         raise Exception("Wrong method given: {}".format(name))
 
@@ -51,11 +45,8 @@ def find_matching_table(tab, tabs:list):
     return None
 
 
-
-def extract_tables_joined(filename: str):
+def merge_tables(tabs1, tabs2):
     tables = []
-    tabs1 = ex_tabula(filename)
-    tabs2 = ex_linesearch(filename)
     # merge and remove duplicates
     for tab_ls in tabs2:
         table_found = find_matching_table(tab_ls, tabs1)

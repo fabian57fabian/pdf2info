@@ -43,5 +43,14 @@
     "FP": 1533,
     "FN": 89,
     "TABLES_TOTAL": 355
+  },
+  "camelot_and_linesearch": {
+    "ACC": 58.87,
+    "P": 14.99,
+    "R": 58.87,
+    "TP": 209,
+    "FP": 1185,
+    "FN": 146,
+    "TABLES_TOTAL": 355
   }
 }
