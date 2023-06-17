@@ -73,7 +73,8 @@ def check_results(csv_folder:str, groundtruth:dict, split_char='-') ->(list, lis
         if gth_tables == 0:
             files_percentage_ok.append(100.0)
         else:
-            files_percentage_ok.append(float(this_TP)/gth_tables*100)
+            acc = float(this_TP)/gth_tables*100
+            files_percentage_ok.append(acc)
             FN += gth_tables - this_TP
     TN = 0 # if no table, ok but no other info.
     return TP, TN, FP, FN, files_percentage_ok

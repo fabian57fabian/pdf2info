@@ -21,7 +21,7 @@ def read_and_delete_file(path) -> Optional[List[str]]:
 
 def find_numbers_in_line(line):
     line_words = line.split(' ')
-    digits_elements = [l for l in line_words if l.replace('.','',1).replace('%','').replace('±','').isdigit()]
+    digits_elements = [l for l in line_words if l.replace('.','').replace(',','').replace('%','').replace('±','').isdigit()]
     return line_words, digits_elements
 
 def extract_tables(path):
@@ -85,7 +85,7 @@ def extract_tables(path):
                         else:
                             line_has_digits = digits >= words // 3 or digits >= 2
                     if digits > 0 and not line_has_digits:
-                        line_has_digits = line_words[-1].replace('.','',1).replace('%','').replace('±','').isdigit()
+                        line_has_digits = line_words[-1].replace('.','').replace(',','').replace('%','').replace('±','').isdigit()
                     if line_has_digits:
                         # line with digits
                         current_table.insert(0, line)
@@ -97,6 +97,7 @@ def extract_tables(path):
                         added = True
 
                     if not added and not last_added:
+                        current_table.insert(0, line) # insert just this one
                         break
 
                     if not added:
