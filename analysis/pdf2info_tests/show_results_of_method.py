@@ -14,6 +14,6 @@ def create_plots_results(method_used:str, show_fig:bool=True):
 
 if __name__ == '__main__':
     logging.basicConfig(level=logging.DEBUG)
-    method_used = 'linesearch'
+    method_used = 'camelot_and_linesearch'
     create_plots_results(method_used, show_fig=True)
 
