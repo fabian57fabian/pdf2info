@@ -8,8 +8,8 @@ from core.analysis.check_results_over_groundtruth import load_groundtruth, check
 def create_plots_results(method_used:str, show_fig:bool=True):
     csv_folder = "csv_extracted"
     gth = load_groundtruth("../DATASET/GROUNDTRUTH_DATASET.csv")
-    TP, TN, FP, FN, files_percentage_ok = check_results(csv_folder, gth, split_char='_')
-    plot_save_results(TP, TN, FP, FN, files_percentage_ok, method_used=method_used,  color_min=0, color_max=100, save_to="../results", show_fig=show_fig)
+    TP, TN, FP, FN, acc_iou, files_percentage_ok = check_results(csv_folder, gth, split_char='_')
+    plot_save_results(TP, TN, FP, FN, acc_iou, files_percentage_ok, method_used=method_used,  color_min=0, color_max=100, save_to="../results", show_fig=show_fig)
 
 
 if __name__ == '__main__':

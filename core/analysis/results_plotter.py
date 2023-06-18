@@ -62,7 +62,7 @@ def update_results(save_to:str, method_used:str, new_data:dict):
     create_results_plot(json_data, os.path.join(save_to, "results.png"))
 
 
-def plot_save_results(TP, TN, FP, FN, files_percentage_ok, method_used="pdf2info", color_min=None, color_max=None, cmap=None, figsize=(7,7), save_to=None, show_fig:bool=True):
+def plot_save_results(TP, TN, FP, FN, acc_iou, files_percentage_ok, method_used="pdf2info", color_min=None, color_max=None, cmap=None, figsize=(7,7), save_to=None, show_fig:bool=True):
     if cmap is None: cmap = DEFAULT_CMAP
     fig = plt.figure(figsize=figsize)
 
@@ -91,7 +91,7 @@ def plot_save_results(TP, TN, FP, FN, files_percentage_ok, method_used="pdf2info
            "TABLES_TOTAL": tables_num,
        }
     interesting_metrics = "{}: ACC: {:.2f}%, P: {:.2f}%, R: {:.2f}%, ({} tables)".format(method_used,  acc*100, precision*100, recall*100, tables_num)
-    all_metrics_row = "TP: {}, FP: {}, FN: {}".format(TP,FP,FN)
+    all_metrics_row = "TP: {}, FP: {}, FN: {}, IoU: {}".format(TP,FP,FN, acc_iou)
     plt.title(interesting_metrics + "\n" + all_metrics_row)
     plt.axis('off')
     plt.imshow(y, cmap=cmap, vmin=color_min, vmax=color_max)
