@@ -81,6 +81,7 @@ def plot_save_results(TP, TN, FP, FN, acc_iou, files_percentage_ok, method_used=
     N = 0
     acc = (TP+TN)/(P+N)
     accuracy_over_pdfs = np.mean(y)
+    ACC_IOU = sum(acc_iou)/len(acc_iou)
     data = {
            "ACC": round(acc*100, 2),
            "P": round(precision*100, 2),
@@ -88,10 +89,11 @@ def plot_save_results(TP, TN, FP, FN, acc_iou, files_percentage_ok, method_used=
            "TP": TP,
            "FP": FP,
            "FN": FN,
+           "ACC_IOU": ACC_IOU,
            "TABLES_TOTAL": tables_num,
        }
     interesting_metrics = "{}: ACC: {:.2f}%, P: {:.2f}%, R: {:.2f}%, ({} tables)".format(method_used,  acc*100, precision*100, recall*100, tables_num)
-    all_metrics_row = "TP: {}, FP: {}, FN: {}, IoU: {}".format(TP,FP,FN, acc_iou)
+    all_metrics_row = "TP: {}, FP: {}, FN: {}, IoU: {:.2f}".format(TP,FP,FN, ACC_IOU*100)
     plt.title(interesting_metrics + "\n" + all_metrics_row)
     plt.axis('off')
     plt.imshow(y, cmap=cmap, vmin=color_min, vmax=color_max)
