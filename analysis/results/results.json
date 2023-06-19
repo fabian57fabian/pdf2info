@@ -33,7 +33,7 @@
     "TP": 292,
     "FP": 80,
     "FN": 40,
-    "ACC_IOU": 63.31
+    "ACC_IOU": 83.1
   },
   "tabula_and_linesearch": {
     "ACC": 93.07,
