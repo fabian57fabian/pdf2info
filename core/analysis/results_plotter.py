@@ -22,8 +22,8 @@ def create_results_plot(json_data:dict, path_out:str):
     methods = list(json_data.keys())
     for k, v in json_data.items():
         data.append(list(v.values()))
-    fig = plt.subplots(figsize=(16,9))
-    bar_width = 0.20
+    fig = plt.subplots(figsize=(20,9))
+    bar_width = 0.15
     first_key = list(json_data.keys())[0]
     X = np.arange(len(json_data[first_key]))
     for i, d in enumerate(data):
@@ -89,8 +89,7 @@ def plot_save_results(TP, TN, FP, FN, acc_iou, files_percentage_ok, method_used=
            "TP": TP,
            "FP": FP,
            "FN": FN,
-           "ACC_IOU": ACC_IOU,
-           "TABLES_TOTAL": tables_num,
+           "ACC_IOU": round(ACC_IOU*100, 2)
        }
     interesting_metrics = "{}: ACC: {:.2f}%, P: {:.2f}%, R: {:.2f}%, ({} tables)".format(method_used,  acc*100, precision*100, recall*100, tables_num)
     all_metrics_row = "TP: {}, FP: {}, FN: {}, IoU: {:.2f}".format(TP,FP,FN, ACC_IOU*100)
