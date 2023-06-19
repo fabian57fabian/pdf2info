@@ -119,16 +119,6 @@ def extract_tables(path):
     return tables
 
 
-# results
-#tabula: 							-> 64.41 %
-#manual 'Table X' + digit					-> 67.75 %
-#manual 'Table X' + float					-> 70.99 %
-#manual 'Table X' + 'Tab. X' + float				-> 72.67 %
-#manual 'Table X' + 'Tab. X' + least 3 numbs + float		-> 73.00 %
-#manual 'Table X' + 'Tab. X' + least 2 numbs + 2,3 elements + float		-> 73.17 %
-#manual 'Table X' + 'Tab. X' + backwards + least 2 numbs + 2,3 elements + float		-> 75.09 %
-#manual 'Table X' + 'Tab. X' + backwards + last_is_num + least 2 numbs + 2,3 elements + float		-> 76.07 %
-
 if __name__ == '__main__':
     logging.basicConfig(level=logging.DEBUG)
     path = "../analysis/DATASET/chunks/papers_chunk_1/2211.09259.pdf"
