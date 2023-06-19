@@ -1,4 +1,5 @@
 import logging
+import argparse
 import sys
 sys.path.insert(0, "../../")
 from core.analysis.results_plotter import plot_save_results
@@ -13,7 +14,12 @@ def create_plots_results(method_used:str, show_fig:bool=True):
 
 
 if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description='View results from extracted tables.')
+    parser.add_argument('--hide', action='store_true', help='Hide figure')
+    parser.add_argument('--method', type=str, required=True, help='Method used')
+    args = parser.parse_args()
     logging.basicConfig(level=logging.DEBUG)
-    method_used = 'camelot_and_linesearch'
-    create_plots_results(method_used, show_fig=True)
+    method_used = args.method
+    show_fig = not args.hide
+    create_plots_results(method_used, show_fig=show_fig)
 
