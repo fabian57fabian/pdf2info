@@ -19,9 +19,12 @@ def read_and_delete_file(path) -> Optional[List[str]]:
         logging.error("Got error while reading: " + str(e))
         return None
 
+def str_has_digit(l: str):
+    return l.replace('+','').replace('-','').replace('.','').replace(' ','').replace(')','').replace('(','').replace(',','').replace('%','').replace('±','').isdigit()
+
 def find_numbers_in_line(line):
     line_words = line.split(' ')
-    digits_elements = [l for l in line_words if l.replace('.','').replace(',','').replace('%','').replace('±','').isdigit()]
+    digits_elements = [l for l in line_words if str_has_digit(l)]
     return line_words, digits_elements
 
 def extract_tables(path):
@@ -85,7 +88,7 @@ def extract_tables(path):
                         else:
                             line_has_digits = digits >= words // 3 or digits >= 2
                     if digits > 0 and not line_has_digits:
-                        line_has_digits = line_words[-1].replace('.','').replace(',','').replace('%','').replace('±','').isdigit()
+                        line_has_digits = str_has_digit(line_words[-1])
                     if line_has_digits:
                         # line with digits
                         current_table.insert(0, line)
