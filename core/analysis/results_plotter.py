@@ -104,3 +104,5 @@ def plot_save_results(TP, TN, FP, FN, acc_iou, files_percentage_ok, method_used=
         fig.savefig(os.path.join(save_to, filename))
         update_results(save_to, method_used, data)
 
+if __name__ == '__main__':
+    update_results("../../analysis/results/", "a", {})
